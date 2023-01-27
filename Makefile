@@ -13,14 +13,15 @@ pre-commit:
 	blog-athena-infra:latest \
 	pre-commit run --all
 
-unittest-woco:
+unittest:
 	docker run \
 	-v $(PWD)/container/:/opt/container \
 	blog-athena-infra:latest \
 	pytest
 
-synth-woco:
+synth:
 	docker run \
 	-v $(PWD)/container/:/opt/container \
+	-e AWS_DEFAULT_ACCOUNT=12 \
 	blog-athena-infra:latest \
-	cdk synth
+	cdk synth --app "python3 main.py"

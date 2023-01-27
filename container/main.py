@@ -25,7 +25,7 @@ class AthenaStack(cdk.Stack):
             tags={"application": "woco-nettoets"},
             **kwargs,
         )
-        aws_account_id = os.environ["AWS_DEFAULT_ACCOUNT"]
+        self.aws_account_id = os.environ["AWS_DEFAULT_ACCOUNT"]
         self.prefix = "athena-vs-redshift"
         self.setup_resources()
 
@@ -34,7 +34,7 @@ class AthenaStack(cdk.Stack):
         self.setup_glue_role()
         self.setup_glue_crawler()
 
-    def setup_glue_policy(self, env):
+    def setup_glue_policy(self):
         policy_name = f"{self.prefix}-glue-policy"
         self.s3_managed_policy = iam.ManagedPolicy(
             self,
@@ -51,7 +51,7 @@ class AthenaStack(cdk.Stack):
             ],
         )
 
-    def _setup_role_for_glue(self, env):
+    def setup_glue_role(self):
         role_name = f"{self.prefix}-glue-role"
         self.glue_role = iam.Role(
             self,
@@ -71,7 +71,7 @@ class AthenaStack(cdk.Stack):
             role_name=role_name,
         )
 
-    def _setup_glue_tables(self, env):
+    def setup_glue_crawler(self):
 
         database_name = f"{self.prefix}-glue-db"
         crawler_name = f"{self.prefix}-glue-crawler"
