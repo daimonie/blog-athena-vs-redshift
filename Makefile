@@ -5,7 +5,7 @@ install:
 dev:
 	docker run -it --rm \
 	-v $(PWD)/container/:/opt/container \
-	-w /src blog-athena-infra
+	blog-athena-infra
 
 pre-commit:
 	docker run \

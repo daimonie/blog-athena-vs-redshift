@@ -1,0 +1,17 @@
+*.swp
+package-lock.json
+__pycache__
+.pytest_cache
+.env
+.venv
+.vscode
+bin
+lib
+lib64
+pyvenv.cfg
+*.egg-info
+
+# CDK asset staging directory
+cdk.context.json
+.cdk.staging
+cdk.out

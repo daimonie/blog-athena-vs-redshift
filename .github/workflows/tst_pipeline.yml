@@ -1,0 +1,44 @@
+name: Testing environment
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  IMAGE_TAG: ${{ github.sha }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-tst:
+    environment: tst
+    runs-on: ubuntu-latest
+    name: Test using testing environment
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: '3.11'
+
+    - name: Install project
+      run: make
+
+    - name: Run pre-commit
+      run: make pre-commit
+
+    - name: Run Unit Test for WOCO nettoets
+      env:
+        CDK_DEFAULT_ACCOUNT: ${{ vars.CDK_DEFAULT_ACCOUNT }}
+        CDK_DEFAULT_REGION: ${{ vars.CDK_DEFAULT_REGION }}
+      run: make unittest-woco
+
+    - name: Run Synth Test for WOCO nettoets
+      env:
+        CDK_DEFAULT_ACCOUNT: ${{ vars.CDK_DEFAULT_ACCOUNT }}
+        CDK_DEFAULT_REGION: ${{ vars.CDK_DEFAULT_REGION }}
+      run: make synth-woco
