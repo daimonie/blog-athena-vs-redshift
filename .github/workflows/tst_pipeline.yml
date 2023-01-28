@@ -31,14 +31,8 @@ jobs:
     - name: Run pre-commit
       run: make pre-commit
 
-    - name: Run Unit Test for WOCO nettoets
-      env:
-        CDK_DEFAULT_ACCOUNT: ${{ vars.CDK_DEFAULT_ACCOUNT }}
-        CDK_DEFAULT_REGION: ${{ vars.CDK_DEFAULT_REGION }}
-      run: make unittest-woco
+    - name: Run Unit Test
+      run: make unittest
 
-    - name: Run Synth Test for WOCO nettoets
-      env:
-        CDK_DEFAULT_ACCOUNT: ${{ vars.CDK_DEFAULT_ACCOUNT }}
-        CDK_DEFAULT_REGION: ${{ vars.CDK_DEFAULT_REGION }}
-      run: make synth-woco
+    - name: Run Synth Test
+      run: make synth
