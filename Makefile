@@ -8,9 +8,7 @@ dev:
 	blog-athena-infra
 
 pre-commit:
-	docker run \
-	-v $(PWD)/container/:/opt/container \
-	blog-athena-infra:latest \
+	pip install pre-commit
 	pre-commit run --all
 
 unittest:
