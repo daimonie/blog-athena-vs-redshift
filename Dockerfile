@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.10
 
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -; \
     apt-get install -y nodejs
