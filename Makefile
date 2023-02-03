@@ -17,6 +17,7 @@ pre-commit:
 unittest:
 	docker run \
 	-v $(PWD)/container/:/opt/container \
+	-e AWS_DEFAULT_ACCOUNT=12 \
 	$(docker_image_name):latest \
 	pytest
 

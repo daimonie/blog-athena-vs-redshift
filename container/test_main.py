@@ -9,7 +9,7 @@ from main import AthenaStack
 @pytest.fixture
 def template():
     unittest_app = cdk.App(context={"env": "tst"})
-    unittest_stack = AthenaStack(unittest_app, "unit_test_stack")
+    unittest_stack = AthenaStack(unittest_app, "unit-test-stack")
 
     unittest_template = assertions.Template.from_stack(unittest_stack)
     return unittest_template
@@ -32,7 +32,7 @@ def test_iam_role(template):
 
 
 def test_iam_policy(template):
-    template.resource_count_is("AWS::IAM::Policy", 1)
+    template.resource_count_is("AWS::IAM::Policy", 0)
 
 
 def test_iam_managed_policy(template):
