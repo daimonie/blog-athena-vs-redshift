@@ -12,7 +12,7 @@ pre-commit:
 	docker run -v $(PWD):/opt/repo \
 	-w /opt/repo \
 	$(docker_image_name):latest \
-	pre-commit run --all
+	apt install pre-commit -y && pre-commit run --all
 
 unittest:
 	docker run \
