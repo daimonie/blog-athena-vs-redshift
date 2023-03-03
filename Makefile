@@ -9,7 +9,7 @@ dev:
 	$(docker_image_name)
 
 pre-commit:
-	pip install pre-commit -y && pre-commit run --all
+	pip install pre-commit && pre-commit run --all
 
 unittest:
 	docker run \
