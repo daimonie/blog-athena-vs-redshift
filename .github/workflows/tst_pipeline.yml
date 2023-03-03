@@ -36,3 +36,9 @@ jobs:
 
     - name: Run Synth Test
       run: make synth
+
+    - name: Run deploy
+      env:
+        KEY: ${{ secrets.KEY }}}
+        SECRET: ${{ secrets.SECRET }}
+      run: make deploy
