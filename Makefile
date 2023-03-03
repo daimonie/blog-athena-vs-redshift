@@ -25,7 +25,7 @@ synth:
 	$(docker_image_name):latest \
 	cdk synth --app "python3 main.py"
 
-deploy-woco:
+deploy:
 	docker run \
 	-v $(PWD)/container/:/opt/container \
 	-e AWS_ACCESS_KEY_ID=$$KEY \
