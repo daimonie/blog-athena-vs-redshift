@@ -9,9 +9,6 @@ dev:
 	$(docker_image_name)
 
 pre-commit:
-	docker run -v $(PWD):/opt/repo \
-	-w /opt/repo \
-	$(docker_image_name):latest \
 	apt install pre-commit -y && pre-commit run --all
 
 unittest:
