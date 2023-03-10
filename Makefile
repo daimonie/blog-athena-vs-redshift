@@ -26,4 +26,4 @@ synth:
 	-v $(PWD)/container/:/opt/container \
 	-e AWS_DEFAULT_ACCOUNT=12 \
 	$(docker_image_name):latest \
-	cdk synth --app "python3 main.py"
+	cdk synth --app "python3 main.py" --output cdk2.out
