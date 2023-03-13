@@ -2,7 +2,7 @@ FROM python:3.10
 
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -; \
     apt-get install -y nodejs
-RUN npm install -g aws-cdk@2.61.0; \
+RUN npm install -g aws-cdk; \
     cdk --version
 
 WORKDIR /opt/container

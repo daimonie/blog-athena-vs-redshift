@@ -9,10 +9,7 @@ dev:
 	$(docker_image_name)
 
 pre-commit:
-	docker run -v $(PWD):/opt/repo \
-	-w /opt/repo \
-	$(docker_image_name):latest \
-	pre-commit run --all
+	pip install pre-commit && pre-commit run --all
 
 unittest:
 	docker run \
@@ -27,3 +24,12 @@ synth:
 	-e AWS_DEFAULT_ACCOUNT=12 \
 	$(docker_image_name):latest \
 	cdk synth --app "python3 main.py" --output cdk2.out >> cf_template.yaml
+
+deploy:
+	docker run \
+	-v $(PWD)/container/:/opt/container \
+	-e AWS_ACCESS_KEY_ID=$$KEY \
+	-e AWS_SECRET_ACCESS_KEY=$$SECRET \
+	-e AWS_DEFAULT_REGION=eu-central-1 \
+	$(docker_image_name):latest \
+	cdk deploy --require-approval never --all
