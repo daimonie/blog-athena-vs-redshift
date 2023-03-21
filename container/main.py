@@ -78,7 +78,7 @@ class AthenaStack(cdk.Stack):
         bucket_name = f"{self.prefix}-query-results"
 
         # I made this bucket by hand and uploaded the data directory
-        s3_url = "s3://athena-vs-redshift/output/"
+        s3_url = "s3://athena-vs-redshift/"
 
         glue_database = glue.CfnDatabase(
             self,
