@@ -1,4 +1,3 @@
-version = "0.1.3"
 docker_image_name = "blog-athena-infra"
 install:
 	docker build -t $(docker_image_name) .
